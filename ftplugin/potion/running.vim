@@ -30,7 +30,7 @@ function! s:PotionShowByteCode() " {{{
     redir END
 
     let current_win = winnr()
-    let new_window  = "rightbelow" . g:potion_bytecode_size . " split"
+    let new_window  = "rightbelow " . g:potion_bytecode_size . "split"
 
     if exists("t:potion_bytecode_buffer")
         call s:ActivateBuffer(t:potion_bytecode_buffer, new_window)
