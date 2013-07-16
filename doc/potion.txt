@@ -1,0 +1,58 @@
+             *potion.txt* A potion functionality plugin *potion*
+
+==============================================================================
+                                   Contents                    *potion-contents*
+
+           1. Introduction..........................|potion-intro|
+           2. Mappings..............................|potion-mappings|
+           3. Global Options........................|potion-options|
+           4. Bugs..................................|potion-bugs|
+           5. License...............................|potion-license|
+
+==============================================================================
+                                 Introduction              *potion-introduction*
+
+I wrote this plugin as a learning exercise with the book "Learn Vimscript the
+Hard Way" by Steve Losh. It is openly available to all at:
+
+                http://learnvimscriptthehardway.stevelosh.com/ 
+
+If you want to learn about Vimscript then I strongly suggest you give it a
+read!
+
+==============================================================================
+                                   Mappings                    *potion-mappings*
+
+<localleader>r      Saves and runs your currently open potion script.
+
+<localleader>b      Saves and compiles your currently open potion script
+                    displaying the bytecode in a new vsplit
+
+==============================================================================
+                                Global Options                  *potion-options*
+
+g:potion_command - Default: "potion"
+
+                   The path to your potion executable. This is the command the
+                   plugin will use when compiling your scripts.
+
+g:potion_bytecode_size - Default: 15
+
+                   The height of the bytecode window when it's freshly opened.
+
+==============================================================================
+                                     Bugs                          *potion-bugs*
+
+If you find a bug you can open a ticket at:
+                    https://github.com/lerp/Potion/issues
+
+As this was a learning exercise I can't guarantee I will fix the bug, I might
+get round to it though so go ahead and open a ticket.
+
+==============================================================================
+                                   License                      *potion-license*
+
+This is released under the wtfpl license.
+See http://www.wtfpl.net/txt/copying/
+
+  vim:tw=78:sw=4:ft=help:norl: 

@@ -1,29 +1,13 @@
-nnoremap <buffer> <localleader>b :w<CR>:call <SID>PotionShowByteCode()<CR>
+" Functions for things to do with executing potion
 
-let g:potion_command="potion"
-let g:potion_bytecode_size = 15
-
-" Switch to the given winnr
-function! s:ActivateWin(nr) " {{{
-    silent execute a:nr . "wincmd w"
+" Executes the current potion file
+function! potion#run#PotionExecute() " {{{
+    silent !clear
+    execute "!" . g:potion_command . " " . bufname("%")
 endfunction " }}}
 
-" Switches to a loaded buffer's window if it's active, otherwise it will open a
-" new split and load the buffer into that win
-function! s:ActivateBuffer(nr, command) " {{{
-    if !bufexists(a:nr)
-        return 0
-    end
-
-    if bufloaded(a:nr)
-        call s:ActivateWin(bufwinnr(a:nr))
-    else
-        execute a:command . " " . bufname(a:nr)
-    endif
-endfunction
-
 " Opens a new buffer displaying the file's bytecode.
-function! s:PotionShowByteCode() " {{{
+function! potion#run#PotionShowByteCode() " {{{
     redir => bytecode
         silent execute "!" . g:potion_command . " -c -V "
         \                  . bufname("%") . " 2\>&1"
@@ -33,7 +17,7 @@ function! s:PotionShowByteCode() " {{{
     let new_window  = "rightbelow " . g:potion_bytecode_size . "split"
 
     if exists("t:potion_bytecode_buffer")
-        call s:ActivateBuffer(t:potion_bytecode_buffer, new_window)
+        call potion#helper#ActivateBuffer(t:potion_bytecode_buffer, new_window)
     else
         execute new_window . " __Potion_Bytecode__"
         let t:potion_bytecode_buffer = bufnr("%")
@@ -51,3 +35,4 @@ function! s:PotionShowByteCode() " {{{
         execute current_win . "wincmd w"
     endif
 endfunction " }}}
+
